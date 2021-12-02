@@ -1,7 +1,7 @@
 import java.io.File
 import java.util.*
 
-class Submarine() {
+class Submarine(private val aimEnabled: Boolean = false) {
     var horizontalPosition = 0
     var depth = 0
     var aim = 0
@@ -12,18 +12,30 @@ class Submarine() {
         when (command.lowercase(Locale.getDefault())) {
             "forward" -> {
                 horizontalPosition += value
-                depth += (aim * value)
+                if (aimEnabled) depth += (aim * value)
             }
-            "down" -> aim += value
-            "up" -> aim -= value
+            "down" -> {
+                if (aimEnabled) {
+                    aim += value
+                } else {
+                    depth += value
+                }
+            }
+            "up" -> {
+                if (aimEnabled) {
+                    aim -= value
+                } else {
+                    depth -= value
+                }
+            }
         }
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val submarine = Submarine()
     File("src/main/inputs/Day2_Dive.txt")
-        .useLines { it ->
+        .useLines {
             it.toList()
         }
         .map {

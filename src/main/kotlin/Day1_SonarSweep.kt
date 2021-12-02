@@ -5,9 +5,9 @@ data class SonarIncrementCounts(
     val windowedIncrements: Int = 0
 )
 
-fun main(args: Array<String>) {
+fun main() {
     val measurements: List<Int> = File("src/main/inputs/Day1_SonarSweeps.txt")
-        .useLines { it ->
+        .useLines {
             it.toList()
         }
         .map {
