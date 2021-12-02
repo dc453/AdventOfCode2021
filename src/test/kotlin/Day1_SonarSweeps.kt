@@ -1,7 +1,7 @@
 import org.junit.Assert
 import org.junit.Test
 
-class Day1Tests {
+class Day1_SonarSweeps_Tests {
     private val measurements = listOf(199, 200, 208, 210, 200, 207, 240, 269, 260, 263)
 
     @Test

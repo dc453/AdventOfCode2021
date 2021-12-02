@@ -6,7 +6,7 @@ data class SonarIncrementCounts(
 )
 
 fun main(args: Array<String>) {
-    val measurements: List<Int> = File("src/main/data/Day1_SonarSweepsMeasurements.txt")
+    val measurements: List<Int> = File("src/main/inputs/Day1_SonarSweeps.txt")
         .useLines { it ->
             it.toList()
         }
