@@ -4,14 +4,18 @@ import java.util.*
 class Submarine() {
     var horizontalPosition = 0
     var depth = 0
+    var aim = 0
     val calculation
         get() = horizontalPosition * depth
 
     fun move(command: String, value: Int) {
         when (command.lowercase(Locale.getDefault())) {
-            "forward" -> horizontalPosition += value
-            "down" -> depth += value
-            "up" -> depth -= value
+            "forward" -> {
+                horizontalPosition += value
+                depth += (aim * value)
+            }
+            "down" -> aim += value
+            "up" -> aim -= value
         }
     }
 }
