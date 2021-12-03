@@ -35,4 +35,22 @@ class Day3_BinaryDiagnostic_Tests {
         val report = DiagnosticReport(testReport)
         Assert.assertEquals(report.powerConsumption, 198)
     }
+
+    @Test
+    fun whenCreatingDiagnosticReport_shouldCalculateOxygenGeneratorRating() {
+        val report = DiagnosticReport(testReport)
+        Assert.assertEquals(report.oxygenGeneratorRating, 23)
+    }
+
+    @Test
+    fun whenCreatingDiagnosticReport_shouldCalculateCO2ScrubberRating() {
+        val report = DiagnosticReport(testReport)
+        Assert.assertEquals(report.cO2ScrubberRating, 10)
+    }
+
+    @Test
+    fun whenCreatingDiagnosticReport_shouldCalculateLifeSupportRating() {
+        val report = DiagnosticReport(testReport)
+        Assert.assertEquals(report.lifeSupportRating, 230)
+    }
 }
