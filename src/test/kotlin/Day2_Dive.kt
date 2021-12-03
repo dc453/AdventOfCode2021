@@ -10,8 +10,8 @@ class Day2_Dive_Tests {
 
         submarine.move("forward", 5)
 
-        Assert.assertEquals(submarine.horizontalPosition, 5)
-        Assert.assertEquals(submarine.depth, 0)
+        Assert.assertEquals(5, submarine.horizontalPosition)
+        Assert.assertEquals(0, submarine.depth)
     }
 
     @Test
@@ -21,8 +21,8 @@ class Day2_Dive_Tests {
 
         submarine.move("forward", 5)
 
-        Assert.assertEquals(submarine.horizontalPosition, 5)
-        Assert.assertEquals(submarine.depth, 15)
+        Assert.assertEquals(5, submarine.horizontalPosition)
+        Assert.assertEquals(15, submarine.depth)
     }
 
     @Test
@@ -31,8 +31,8 @@ class Day2_Dive_Tests {
 
         submarine.move("down", 6)
 
-        Assert.assertEquals(submarine.depth, 6)
-        Assert.assertEquals(submarine.aim, 0)
+        Assert.assertEquals(6, submarine.depth)
+        Assert.assertEquals(0, submarine.aim)
     }
 
     @Test
@@ -41,8 +41,8 @@ class Day2_Dive_Tests {
 
         submarine.move("down", 6)
 
-        Assert.assertEquals(submarine.depth, 0)
-        Assert.assertEquals(submarine.aim, 6)
+        Assert.assertEquals(0, submarine.depth)
+        Assert.assertEquals(6, submarine.aim)
     }
 
     @Test
@@ -52,8 +52,8 @@ class Day2_Dive_Tests {
 
         submarine.move("up", 4)
 
-        Assert.assertEquals(submarine.depth, 2)
-        Assert.assertEquals(submarine.aim, 0)
+        Assert.assertEquals(2 ,submarine.depth)
+        Assert.assertEquals(0, submarine.aim)
     }
 
     @Test
@@ -63,8 +63,8 @@ class Day2_Dive_Tests {
 
         submarine.move("up", 4)
 
-        Assert.assertEquals(submarine.depth, 0)
-        Assert.assertEquals(submarine.aim, 2)
+        Assert.assertEquals(0, submarine.depth)
+        Assert.assertEquals(2, submarine.aim)
     }
 
     @Test
@@ -78,7 +78,7 @@ class Day2_Dive_Tests {
         submarine.move("down", 8)
         submarine.move("forward", 2)
 
-        Assert.assertEquals(submarine.calculation, 150)
+        Assert.assertEquals(150, submarine.calculation)
     }
 
     @Test
@@ -92,7 +92,7 @@ class Day2_Dive_Tests {
         submarine.move("doWN", 8)
         submarine.move("forwaRD", 2)
 
-        Assert.assertEquals(submarine.calculation, 150)
+        Assert.assertEquals(150, submarine.calculation)
     }
 
     @Test
@@ -106,6 +106,6 @@ class Day2_Dive_Tests {
         submarine.move("down", 8)
         submarine.move("forward", 2)
 
-        Assert.assertEquals(submarine.calculation, 900)
+        Assert.assertEquals(900, submarine.calculation)
     }
 }

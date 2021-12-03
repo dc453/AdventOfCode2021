@@ -7,12 +7,12 @@ class Day1_SonarSweeps_Tests {
     @Test
     fun shouldDetectIncrementingSonarSweepsOnly() {
         val increments = calculateSonarSweepIncrements(measurements)
-        Assert.assertEquals(increments.singleIncrements, 7)
+        Assert.assertEquals(7, increments.singleIncrements)
     }
 
     @Test
     fun shouldDetectIncrementingWindowedSonarSweeps() {
         val increments = calculateSonarSweepIncrements(measurements)
-        Assert.assertEquals(increments.windowedIncrements, 5)
+        Assert.assertEquals(5, increments.windowedIncrements)
     }
 }

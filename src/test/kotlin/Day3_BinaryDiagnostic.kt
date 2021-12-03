@@ -21,36 +21,36 @@ class Day3_BinaryDiagnostic_Tests {
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculateGammaRate() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.gammaRate, 22)
+        Assert.assertEquals(22, report.gammaRate)
     }
 
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculateEpsilonRate() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.epsilonRate, 9)
+        Assert.assertEquals(9, report.epsilonRate)
     }
 
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculatePowerConsumption() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.powerConsumption, 198)
+        Assert.assertEquals(198, report.powerConsumption)
     }
 
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculateOxygenGeneratorRating() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.oxygenGeneratorRating, 23)
+        Assert.assertEquals(23, report.oxygenGeneratorRating)
     }
 
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculateCO2ScrubberRating() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.cO2ScrubberRating, 10)
+        Assert.assertEquals(10, report.cO2ScrubberRating)
     }
 
     @Test
     fun whenCreatingDiagnosticReport_shouldCalculateLifeSupportRating() {
         val report = DiagnosticReport(testReport)
-        Assert.assertEquals(report.lifeSupportRating, 230)
+        Assert.assertEquals(230, report.lifeSupportRating)
     }
 }
