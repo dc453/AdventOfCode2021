@@ -35,9 +35,7 @@ class Submarine(private val aimEnabled: Boolean = false) {
 fun main() {
     val submarine = Submarine()
     File("src/main/inputs/Day2_Dive.txt")
-        .useLines {
-            it.toList()
-        }
+        .readLines()
         .map {
             val parts = it.split(" ")
             submarine.move(parts[0], parts[1].toInt())
