@@ -135,4 +135,18 @@ class Day4_GiantSquid_Tests {
         Assert.assertEquals(bingo.boards[2], bingo.winningBoard)
     }
 
+    @Test
+    fun whenDrawingNumbers_whenHasBingo_shouldKeepRecordOfNumberOfWinningBoards() {
+        val bingo = Bingo(testSubsystem)
+
+        for (i in 1..12) {
+            bingo.draw()
+        }
+        bingo.boards.forEach {
+            println("winner ${it.hasBingo}")
+            println("board ${it.board}")
+        }
+
+        Assert.assertEquals(1, bingo.numWinningBoards)
+    }
 }

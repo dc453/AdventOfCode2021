@@ -18,6 +18,7 @@ class Bingo(subsystem: String) {
     var boardCount = -1
     var winningBoard: BingoBoard? = null
     var hasWinner = false
+    var numWinningBoards = 0
 
     init {
         rawBoardDataLoop@ for (line in rawBoardData) {
@@ -62,9 +63,14 @@ class Bingo(subsystem: String) {
     }
 
     private fun declareBingo(board: BingoBoard) {
+        if (board.hasBingo) {
+            return
+        }
+
         board.hasBingo = true
         hasWinner = true
         winningBoard = board
+        numWinningBoards++
     }
 
     inner class BingoBoard() {
@@ -89,8 +95,14 @@ fun main() {
     val input = File("src/main/inputs/Day4_GiantSquid.txt")
         .readText()
     val bingo = Bingo(input)
+
     while (!bingo.hasWinner) {
         bingo.draw()
     }
     println("winning bingo board score: ${bingo.winningBoard?.bingoScore}")
+
+    while (bingo.numWinningBoards < bingo.boards.size) {
+        bingo.draw()
+    }
+    println("last winning bingo board score: ${bingo.winningBoard?.bingoScore}")
 }
