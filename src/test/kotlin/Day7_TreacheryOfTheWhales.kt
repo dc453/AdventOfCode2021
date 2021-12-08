@@ -16,4 +16,18 @@ class Day7_TreacheryOfTheWhales_Tests {
         val directions = getFuelEfficientPosition(testInput)
         Assert.assertEquals(37, directions.fuelUsed)
     }
+
+    @Test
+    fun whenDeterminingMostFuelEfficientMove_andCrabEngineeringEnabled_shouldReportPosition() {
+        val testInput = "16,1,2,0,4,2,7,1,2,14"
+        val directions = getFuelEfficientPosition(input = testInput, crabEngineering = true)
+        Assert.assertEquals(5, directions.position)
+    }
+
+    @Test
+    fun whenDeterminingMostFuelEfficientMove_andCrabEngineeringEnabled_shouldReportFuelUsed() {
+        val testInput = "16,1,2,0,4,2,7,1,2,14"
+        val directions = getFuelEfficientPosition(input = testInput, crabEngineering = true)
+        Assert.assertEquals(168, directions.fuelUsed)
+    }
 }
