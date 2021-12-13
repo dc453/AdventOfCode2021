@@ -79,4 +79,27 @@ class Day10_DumboOctopus_Tests {
         for (i in 11..100) cavern.step()
         Assert.assertEquals(1656, cavern.totalFlashes)
     }
+
+    @Test
+    fun dumboOctopuses_whenFlashing_shouldKeepTrackOfFlashesInStep() {
+        val cavern = Cavern(testInput)
+
+        cavern.step()
+        Assert.assertEquals(0, cavern.totalFlashesInCurrentStep)
+
+        cavern.step()
+        Assert.assertEquals(35, cavern.totalFlashesInCurrentStep)
+
+        cavern.step()
+        Assert.assertEquals(45, cavern.totalFlashesInCurrentStep)
+    }
+
+    @Test
+    fun dumboOctopuses_shouldReturnStepFlashesSync() {
+        val cavern = Cavern("777\n" +
+                "777\n" +
+                "777")
+        val step = cavern.getStepFlashesSync()
+        Assert.assertEquals(3, step)
+    }
 }
