@@ -3,8 +3,8 @@ import java.io.File
 class Node(
     val x: Int,
     val y: Int,
-    val distance: Int,
-    var totalDistance: Int = Int.MAX_VALUE,
+    val risk: Int,
+    var totalRisk: Int = Int.MAX_VALUE,
     var visited: Boolean = false
 ) {
 
@@ -21,16 +21,16 @@ class ChitonRiskAssessor(input: String) {
         }
     var unvisitedNodes: MutableSet<Node> = map.flatten().toMutableSet()
     var currentNode: Node = map[0][0].also {
-        it.totalDistance = 0
+        it.totalRisk = 0
     }
 
     init {
 //        println(map)
     }
 
-    fun getShortestPath(): Int {
+    fun getSafestPathRiskLevel(): Int {
         while (unvisitedNodes.size > 0) {
-            unvisitedNodes.sortedBy { it.totalDistance }
+            unvisitedNodes.sortedBy { it.totalRisk }
             currentNode = unvisitedNodes.first()
             checkNorth()
             checkWest()
@@ -39,7 +39,7 @@ class ChitonRiskAssessor(input: String) {
             currentNode.visited = true
             unvisitedNodes.remove(currentNode)
         }
-        return map[map.lastIndex][map[0].lastIndex].totalDistance
+        return map[map.lastIndex][map[0].lastIndex].totalRisk
     }
 
     private fun checkNorth() {
@@ -47,7 +47,7 @@ class ChitonRiskAssessor(input: String) {
             return
         }
         val targetNode = map[currentNode.y - 1][currentNode.x]
-        updateTotalDistance(targetNode)
+        updateTotalRisk(targetNode)
     }
 
     private fun checkWest() {
@@ -55,7 +55,7 @@ class ChitonRiskAssessor(input: String) {
             return
         }
         val targetNode = map[currentNode.y][currentNode.x - 1]
-        updateTotalDistance(targetNode)
+        updateTotalRisk(targetNode)
     }
 
     private fun checkSouth() {
@@ -63,7 +63,7 @@ class ChitonRiskAssessor(input: String) {
             return
         }
         val targetNode = map[currentNode.y + 1][currentNode.x]
-        updateTotalDistance(targetNode)
+        updateTotalRisk(targetNode)
     }
 
     private fun checkEast() {
@@ -71,16 +71,16 @@ class ChitonRiskAssessor(input: String) {
             return
         }
         val targetNode = map[currentNode.y][currentNode.x + 1]
-        updateTotalDistance(targetNode)
+        updateTotalRisk(targetNode)
     }
 
-    private fun updateTotalDistance(targetNode: Node) {
+    private fun updateTotalRisk(targetNode: Node) {
         if (targetNode.visited) {
             return
         }
-        val newDistance = targetNode.distance + currentNode.totalDistance
-        if (newDistance < targetNode.totalDistance) {
-            targetNode.totalDistance = newDistance
+        val newDistance = targetNode.risk + currentNode.totalRisk
+        if (newDistance < targetNode.totalRisk) {
+            targetNode.totalRisk = newDistance
         }
     }
 }
@@ -89,6 +89,6 @@ fun main() {
     val input = File("src/main/inputs/Day15_Chiton.txt")
         .readText()
     val chiton = ChitonRiskAssessor(input)
-    val shortestPath = chiton.getShortestPath()
-    println("part 1) the shortest path is $shortestPath")
+    val shortestPath = chiton.getSafestPathRiskLevel()
+    println("part 1) the least risky path has a risk level of $shortestPath")
 }

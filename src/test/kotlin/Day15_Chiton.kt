@@ -16,17 +16,17 @@ class Day15_Chiton_Tests {
 
 
     @Test
-    fun chitonRiskAssessor_shouldDetermineShortestPath() {
+    fun chitonRiskAssessor_shouldDetermineLeastRiskyPath() {
         val chitonRiskAssessor = ChitonRiskAssessor("12\n" +
                 "61")
-        val shortestPath = chitonRiskAssessor.getShortestPath()
-        Assert.assertEquals(3, shortestPath)
+        val path = chitonRiskAssessor.getSafestPathRiskLevel()
+        Assert.assertEquals(3, path)
     }
 
     @Test
-    fun chitonRiskAssessor_shouldDetermineShortestPath_whenMultipleBranchingPaths() {
+    fun chitonRiskAssessor_shouldDetermineLeastRiskyPath_whenMultipleBranchingPaths() {
         val chitonRiskAssessor = ChitonRiskAssessor(testInput)
-        val shortestPath = chitonRiskAssessor.getShortestPath()
-        Assert.assertEquals(40, shortestPath)
+        val path = chitonRiskAssessor.getSafestPathRiskLevel()
+        Assert.assertEquals(40, path)
     }
 }
