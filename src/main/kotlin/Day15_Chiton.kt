@@ -28,13 +28,6 @@ class ChitonRiskAssessor(input: String) {
         it.totalRisk = 0
     }
 
-
-    init {
-        fullMap.forEach { row ->
-            println(row.map { "${it.risk}" }.joinToString(""))
-        }
-    }
-
     private fun buildFullMap(): MutableList<MutableList<Node>> {
         val tempMap: MutableList<MutableList<Node?>> = MutableList(map.size * 5) {
             MutableList(map[0].size * 5) { null }
@@ -43,14 +36,13 @@ class ChitonRiskAssessor(input: String) {
             for (y in 0..4) {
                 map.forEachIndexed { rowIndex, nodes ->
                     nodes.forEachIndexed { colIndex, node ->
-                        var risk = (map[rowIndex][colIndex].risk + x + y)
+                        var risk = (node.risk + x + y)
                         if (risk > 9) {
                             risk %= 9
                         }
-    //                        println("new risk $risk being placed at ${colIndex+x}-${rowIndex+y}")
                         tempMap[rowIndex + (y * map.size)][colIndex + (x * map[0].size)] = Node(
-                            colIndex + x,
-                            rowIndex + y,
+                            colIndex + (x * map[0].size),
+                            rowIndex + (y * map[0].size),
                             risk
                         )
                     }
@@ -65,6 +57,8 @@ class ChitonRiskAssessor(input: String) {
         if (useFullMap) {
             unvisitedNodes = fullMap.flatten().toMutableSet()
         }
+        targetMap[0][0].totalRisk = 0
+
         while (unvisitedNodes.size > 0) {
             unvisitedNodes.sortedBy { it.totalRisk }
             currentNode = unvisitedNodes.first()
@@ -75,7 +69,16 @@ class ChitonRiskAssessor(input: String) {
             currentNode.visited = true
             unvisitedNodes.remove(currentNode)
         }
+
+//        printTotalRiskLevels()
+
         return targetMap[targetMap.lastIndex][targetMap[0].lastIndex].totalRisk
+    }
+
+    private fun printTotalRiskLevels() {
+        targetMap.forEach { row ->
+            println(row.joinToString("") { "${it.totalRisk} " })
+        }
     }
 
     private fun checkNorth() {
@@ -128,7 +131,7 @@ fun main() {
     val path1 = chiton.getSafestPathRiskLevel()
     println("part 1) the least risky path has a risk level of $path1")
 
-    // TODO - figure out why were getting max int value with the full map
+    // TODO - figure out what is causing this total risk value to be incorrect
     val path2 = chiton.getSafestPathRiskLevel(useFullMap = true)
     println("part 2) the least risky path for the full map has a risk level of $path2")
 }

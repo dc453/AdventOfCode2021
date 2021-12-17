@@ -29,4 +29,11 @@ class Day15_Chiton_Tests {
         val path = chitonRiskAssessor.getSafestPathRiskLevel()
         Assert.assertEquals(40, path)
     }
+
+    @Test
+    fun chitonRiskAssessor_shouldDetermineLeastRiskyPath_whenUsingFullMap() {
+        val chitonRiskAssessor = ChitonRiskAssessor(testInput)
+        val path = chitonRiskAssessor.getSafestPathRiskLevel(true)
+        Assert.assertEquals(315, path)
+    }
 }
