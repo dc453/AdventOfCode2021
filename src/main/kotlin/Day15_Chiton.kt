@@ -78,9 +78,9 @@ class ChitonRiskAssessor(input: String) {
         if (targetNode.visited) {
             return
         }
-        val newDistance = targetNode.risk + currentNode.totalRisk
-        if (newDistance < targetNode.totalRisk) {
-            targetNode.totalRisk = newDistance
+        val newRisk = targetNode.risk + currentNode.totalRisk
+        if (newRisk < targetNode.totalRisk) {
+            targetNode.totalRisk = newRisk
         }
     }
 }
